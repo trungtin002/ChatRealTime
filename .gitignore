@@ -1,0 +1,24 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore .env file (chứa biến môi trường nhạy cảm)
+.env
+
+# Ignore log files
+*.log
+
+# Ignore built files
+/dist
+/build
+
+# Ignore dependency directories
+/bower_components/
+/jspm_packages/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore editor-specific files
+.idea/
+.vscode/
