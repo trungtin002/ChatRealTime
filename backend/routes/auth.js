@@ -37,9 +37,15 @@ router.post('/register',checkvalid(), async function(req, res, next) {
         });
           
         await newUser.save();         
-        res.status(200).send(newUser);
+        res.status(200).json({
+            _id: newUser._id,
+			fullname: newUser.fullname,
+			username: newUser.username,
+			profilePic: newUser.profilePic,
+            email: newUser.email
+        });
     } catch (error) {
-        res.status(400).send(error.message);
+        res.status(400).json(error.message);
     }      
 });
 
