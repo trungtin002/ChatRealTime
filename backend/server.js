@@ -4,14 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var {app , server} = require('./socket/socket');
+ 
 
-
-
-var app = express();
+app = express();
 
 mongoose.connect("mongodb://127.0.0.1:27017/ChatRT").then(
   function () {
-    console.log("connected");
+    console.log("connected"); 
   }).catch(
     function (error) {
       console.log(error);
