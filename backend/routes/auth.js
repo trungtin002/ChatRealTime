@@ -33,7 +33,7 @@ router.post('/register',checkvalid(), async function(req, res, next) {
             password,
             email,
             gender,
-            profilePic: gender == 'boy'? boyProfilePic : girlProfilePic,
+            profilePic: gender == 'male'? boyProfilePic : girlProfilePic,
         });
           
         await newUser.save();         
@@ -60,10 +60,14 @@ router.post('/login', async function(req, res, next) {
                 res.status(200).cookie('token', tokenUser, {
                     expires: new Date(Date.now() + config.COOKIES_EXP_HOUR * 3600 * 1000),
                     httpOnly: true
-                  }).send({
-                    success: true,
-                    data: tokenUser
-                  })
+                  }).json({
+                    _id: user._id,
+                    fullname: user.fullname,
+                    username: user.username,
+                    profilePic: user.profilePic,
+                });
+                  
+                 
             } else {
                 res.status(400).send("Wrong password");
             }

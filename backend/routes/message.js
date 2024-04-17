@@ -36,8 +36,8 @@ router.post('/send/:id',protect,async function (req, res,next) {
         //SOCKET 
         // await conversation.save();
 
-        await Promise.all([conversation.save(), message.save()]);
-        return res.status(200).json(newMessage);
+        await Promise.all([conversation.save(), newMessage.save()]);
+        return res.status(200).send(newMessage);
     } catch (error) {
         return res.status(500).send(error.message);
     }
